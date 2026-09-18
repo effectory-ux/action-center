@@ -1283,7 +1283,7 @@
       '<div class="step-modal nr-modal" role="dialog" aria-modal="true">' +
         '<button class="step-close ib ib-36 ib-tertiary" aria-label="Close" onclick="closeNotRelevant()"><i data-icon="cross"></i></button>' +
         '<div class="step-hero"><div class="step-hero-row"><span class="step-hero-ico is-support"><i data-icon="down-vote"></i></span><h2 class="step-h2">Not relevant for your team?</h2></div>' +
-        '<p class="step-sub">Tell us why, so HR can read “' + esc(fa.text) + '” in the right context.</p></div>' +
+        '<p class="step-sub">Tell us why, so “' + esc(fa.text) + '” is read in the right context.</p></div>' +
         '<div class="nr-list">' + list + '</div>' +
         '<div class="step-footer"><button class="btn btn-secondary" onclick="closeNotRelevant()">Cancel</button>' +
           '<button class="btn btn-primary' + (canSubmit ? '' : ' is-disabled') + '"' + (canSubmit ? '' : ' disabled') + ' onclick="submitNotRelevant()">Mark not relevant</button></div>' +
@@ -1358,7 +1358,7 @@
     return '<div class="fv-approach"><div class="fa-done">' +
       '<div class="fa-done-row">' +
         '<span class="fa-done-ico is-' + fa.state + '"><i data-icon="' + icon + '"></i></span>' +
-        '<div class="fa-done-body"><div class="fa-done-title">' + title + '</div><div class="fa-done-note">Visible to HR</div></div>' +
+        '<div class="fa-done-body"><div class="fa-done-title">' + title + '</div><div class="fa-done-note">Saved to Actions</div></div>' +
         '<button class="link-inline fa-done-editlink" onclick="openStepDialog(' + fa.id + ',\'plan\')"><i data-icon="edit"></i> Edit details</button>' +
       '</div>' +
       '<div class="fa-done-details">' + details + '</div>' +
@@ -1440,7 +1440,7 @@
       '<div class="fv-approach"><div class="fa-done">' +
         '<div class="fa-done-row">' +
           '<span class="fa-done-ico is-' + fa.state + '"><i data-icon="' + icon + '"></i></span>' +
-          '<div class="fa-done-body"><div class="fa-done-title">' + title + '</div><div class="fa-done-note">Visible to HR</div></div>' +
+          '<div class="fa-done-body"><div class="fa-done-title">' + title + '</div><div class="fa-done-note">Saved to Actions</div></div>' +
         '</div>' +
         '<div class="fa-done-details">' + details + '</div>' +
         '<div class="fa-done-editrow"><button class="link-inline fa-done-editlink" onclick="triageEdit(' + fa.id + ')"><i data-icon="edit"></i> Edit details</button></div>' +
@@ -1491,7 +1491,7 @@
       host.innerHTML = '<div class="step-success">' +
         '<span class="step-hero-ico is-success step-success-ico"><i data-icon="check"></i></span>' +
         '<h2 class="step-h2">You\u2019re all set</h2>' +
-        '<p class="step-sub">' + triageIds.length + ' focus area' + (triageIds.length === 1 ? '' : 's') + ' triaged. Your team can see them and they\u2019re visible to HR.</p>' +
+        '<p class="step-sub">' + triageIds.length + ' focus area' + (triageIds.length === 1 ? '' : 's') + ' triaged. You\u2019ll find them on the Actions page.</p>' +
         '<div class="step-success-acts"><button class="btn btn-secondary" onclick="triageGoToActions()">Go to Actions</button><button class="btn btn-primary" onclick="backToFocus()">Back to Focus View</button></div></div>';
       var f0 = document.getElementById('triage-foot'); if(f0) f0.innerHTML = '';
       var p0 = document.getElementById('triage-progress'); if(p0) p0.textContent = '';
@@ -1786,7 +1786,7 @@
   // One line for all four responses. It was four near-identical green success bars, one of them also
   // ungrammatical ("informed on your response"), and success-green promised an outcome where this is
   // only a note about who can see it. Where the recipient differs, the response already names it.
-  var HR_NOTE = 'Visible to HR';
+  var HR_NOTE = 'Saved to Actions';
   function hrNoteHTML(){ return '<div class="fa-done-note">' + HR_NOTE + '</div>'; }
   // Changing/cancelling a decision briefly shows a spinner before it resets, like every other commit
   function changeDecision(id){
@@ -2062,7 +2062,7 @@
           '<span class="inline-notif-icon"><i data-icon="check"></i></span>' +
           '<div class="inline-notif-content"><span class="inline-notif-text">' +
             '<span class="inline-notif-title">' + title + '</span>' +
-            '<span class="inline-notif-msg">Your team can see this, and it rolls up to HR automatically. There\'s nothing extra to report.</span>' +
+            '<span class="inline-notif-msg">Everything you decide here is saved automatically. There\'s nothing extra to fill in.</span>' +
           '</span></div>' +
         '</div>';
     } else {
@@ -2397,7 +2397,7 @@
     };
     return '<div class="actions-empty">' + ACTIONS_ILLO +
       '<h2 class="ae-title">Turn your results into action</h2>' +
-      '<p class="ae-desc">Respond to a focus area to decide how you’ll act on it, and it shows up here — shared with your team and visible to HR. Not sure where to start? Create a custom action from your own goal.</p>' +
+      '<p class="ae-desc">Respond to a focus area to decide how you’ll act on it, and it shows up here. Not sure where to start? Create a custom action from your own goal.</p>' +
       '<div class="ae-types">' +
         chip('target', 'Improve', 'Commit to a concrete next step.') +
         chip('eye', 'Monitor', 'Keep it on your radar for later.') +
@@ -2750,7 +2750,7 @@
       body = '<div class="step-success">' +
         '<span class="step-hero-ico is-success step-success-ico"><i data-icon="check"></i></span>' +
         '<h2 class="step-h2">You’re all set</h2>' +
-        '<p class="step-sub">“' + esc(fa.text) + '” is now <strong>' + word + '</strong>. Your team can see it and it’s visible to HR.</p>' +
+        '<p class="step-sub">“' + esc(fa.text) + '” is now <strong>' + word + '</strong>. You’ll find it on the Actions page.</p>' +
         '<div class="step-success-acts">' + ((typeof fa.id === 'string') ? '<button class="btn btn-secondary" onclick="stepClose()">Back to Focus View</button><button class="btn btn-primary" onclick="stepGoToActions()">Go to Actions</button>' : '<button class="btn btn-secondary" onclick="stepGoToActions()">Go to Actions</button><button class="btn btn-primary" onclick="stepClose()">Back to Focus View</button>') + '</div>' + '</div>';
     } else if(stepStage === 'respond'){
       body = '<div class="step-hero"><div class="step-hero-row"><span class="step-hero-ico"><i data-icon="list-unordered"></i></span><h2 class="step-h2">Choose how to respond</h2></div>' +

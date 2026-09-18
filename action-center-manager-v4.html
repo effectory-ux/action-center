@@ -1143,7 +1143,7 @@
             <div class="actions-head">
               <span class="fv-eyebrow is-focus">Your responses</span>
               <h2 class="fv-section-title">Everything you've decided to act on</h2>
-              <p class="fv-section-desc">Actions you're taking, areas you're monitoring, and topics flagged for support &mdash; gathered from your focus areas and the questions you pinned in the Overview. All of this is visible to HR.</p>
+              <p class="fv-section-desc">All actions you're taking, areas you're monitoring, and topics flagged for support, gathered from your focus areas and the questions you pinned in the Overview.</p>
             </div>
             <div class="actions-summary" id="actions-summary"></div>
             <div class="fv-cards" id="actions-list"></div>
@@ -2404,7 +2404,7 @@
         chip('flag', 'Need support', 'Flag it for the right person.') +
         chip('benchmark-up', 'Promote', 'Celebrate and share a strength.') +
       '</div>' +
-      '<button class="btn btn-primary ae-cta" onclick="openCustomAction()"><i data-icon="plus"></i> Create Custom Action</button>' +
+      '<button class="btn btn-primary ae-cta" onclick="openCustomAction()"><i data-icon="plus"></i> Create pin</button>' +
     '</div>';
   }
 
@@ -2459,7 +2459,7 @@
     items.forEach(function(f){ if(counts[f.state] != null) counts[f.state]++; });
     var summary = document.getElementById('actions-summary');
     if(summary){
-      summary.innerHTML = [['action', 'target', 'To improve'], ['monitor', 'eye', 'Monitoring'], ['support', 'flag', 'Flagged for support']].map(function(r){
+      summary.innerHTML = [['action', 'target', 'To improve'], ['monitor', 'eye', 'To monitor'], ['support', 'flag', 'Flagged for support']].map(function(r){
         return '<div class="act-sum is-' + r[0] + '"><span class="act-sum-ico"><i data-icon="' + r[1] + '"></i></span>' +
           '<div class="act-sum-txt"><span class="act-sum-n">' + counts[r[0]] + '</span><span class="act-sum-l">' + r[2] + '</span></div></div>';
       }).join('');
